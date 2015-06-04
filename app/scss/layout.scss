@@ -1,0 +1,55 @@
+
+h1 {
+	font-size: 26px;
+}
+
+#app-container {
+	@include outer-container;
+}
+
+.playlist {
+	margin-top: 60px;
+}
+
+header {
+	@include row();
+	margin-top: 120px;
+
+	.logo {
+		@include span-columns(8);
+		display: block;
+	    font-size: 30px;
+	    font-family: 'Century Gothic';
+
+	    img {
+	    	@include span-columns(4);
+	    	height: 90px;
+	    	width: 90px;
+	    }
+
+	    aside {
+	    	@include span-columns(8);
+
+	    	color: #FFB87E;
+	    	margin-top: 18px;
+	    	font-size: 18px;
+
+	    	p {
+	    		text-transform: uppercase;
+	    	}
+	    }
+	}
+
+	.sms-number {
+		@include span-columns(4);
+
+		text-align: right;
+  	color: #FFB87E;
+  	margin-top: 22px;
+  	font-size: 18px;
+
+  	strong {
+  		font-size: 24px;
+  	}
+	}
+}

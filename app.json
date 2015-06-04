@@ -1,0 +1,34 @@
+{
+  "name": "Disco Chat",
+  "description": "The Hitchhikers Sample App",
+  "website": "https://www.heroku.com/form/hitchhiker",
+  "repository": "https://github.com/mattcreager/disco-chat",
+  "logo": "https://small-sharp-tool.com/logo.svg",
+  "success_url": "/",
+  "env": {
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "DATABASE_URL": {
+      "required": true
+    },
+    "SESSION_SECRET": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "HOST": "0.0.0.0",
+    "NODE_ENV": "staging",
+    "BLUEBIRD_DEBUG": "1",
+    "RDIO_CLIENT_ID": {
+      "required": true
+    },
+    "RDIO_CLIENT_SECRET": {
+      "required": true
+    },
+    "URL": "http://disco-chat.herokuapp.com",
+    "VERBOSE": "TRUE"
+  },
+  "addons": [
+    "heroku-redis"
+  ]
+}

@@ -1,0 +1,121 @@
+.playlist {
+  @include display(flex);
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+}
+
+.track-wrapper aside {
+  @include row();
+  font-size: 18px;
+  font-weight: bold;
+  color: #7E0000;
+
+  div:nth-child(1) {
+  	@include span-columns(8);
+  }
+
+  div:nth-child(2) {
+  	@include span-columns(4);
+  	text-align: right;
+	color: #FF7E7E;
+  }
+}
+
+.track {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 1px !default;
+  $base-background-color: white !default;
+  $base-spacing: 1em !default;
+  $action-color: #477DCA !default;
+  $base-link-color: $action-color !default;
+  $dark-gray: #333 !default;
+  $base-font-color: $dark-gray !default;
+  $track-border-color: $base-border-color;
+  $track-border: 1px solid $track-border-color;
+  $track-background: lighten($track-border-color, 10%);
+  $track-header-background: $track-background;
+  $track-hover-background: lighten($track-background, 5%);
+  $track-image-background: #DBD199;
+  $track-image-hover-background: lighten($track-image-background, 5%);
+  $track-margin: 0;
+  $track-padding: 8px;
+
+  @include flex-basis(10em);
+  @include flex-grow(1);
+  @include transition (all 0.2s ease-in-out);
+  width: 250px;
+  background-color: $track-background;
+  border-radius: $base-border-radius;
+  border: $track-border;
+  box-shadow: 0 1px 1px darken($base-background-color, 50%);
+  cursor: pointer;
+  margin: 0 $track-margin $base-spacing $track-margin;
+  position: relative;
+  padding: 17px 16px $track-padding;
+
+  .cover-art {
+    overflow: hidden;
+    max-height: 215px;
+
+    img {
+      @include transition (all 0.2s ease-in-out);
+      background: $track-image-background;
+      border-top-left-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+      width: 100%;
+    }
+  }
+
+  .cover-art {
+    @include transition (all 0.2s ease-in-out);
+    background-color: $track-header-background;
+    border-bottom: $track-border;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .details {
+    font-size: 18px;
+    padding: ($base-spacing / 2) 0;
+    line-height: 1.4em;
+    margin-top:8px;
+
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+
+    .name {
+      color: #7E0000;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.5em;
+    }
+
+    .artist {
+      color: #FF7E7E;
+    }
+  }
+
+  &:focus,
+  &:hover {
+    background-color: $track-hover-background;
+
+    .cover-art img {
+      background: $track-image-hover-background;
+    }
+
+    .track-header {
+      background-color: $track-hover-background;
+    }
+  }
+
+  &:active {
+    background-color: $track-background;
+
+    .track-header {
+      background-color: $track-background;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+
+pids
+logs
+results
+
+*.env
+*.sublime-workspace
+*.sublime-project
+.DS_Stor
+.DS_Store
+app/.DS_Store
