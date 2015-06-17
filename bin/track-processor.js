@@ -79,7 +79,7 @@ function track(job, done) {
           return
         }
 
-        if (body.result.track_count === 0) {
+        if (!body.result || body.result.track_count === 0) {
           fmt.log({
             type: 'warning',
             msg: 'Rdio search yielded no result',
