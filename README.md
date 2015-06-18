@@ -4,13 +4,18 @@
 
 ## Local Development Dependencies
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
+- [IO.JS]()
+- [Postgres](https://www.docker.com/)
+- [Redis](https://docs.docker.com/compose/)
 
 ## Install
 
-1. `docker-compose up -d` - start the application
-2. `gulp`      - live reload/compilation (you'll want to use a seperate CLI tab)
+1. `npm install`
+2. `npm start`
+
+## Local Development
+
+3. `gulp` - live reload/compilation (you'll want to use a seperate CLI tab)
 
 ## Run
 
