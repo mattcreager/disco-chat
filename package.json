@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node --harmony_classes ./bin/www",
     "processTracks": "node --harmony_classes ./bin/track-processor",
-    "test": "standard && gulp test"
+    "test": "standard && gulp test",
+    "gulp": "gulp"
   },
   "author": "",
   "license": "ISC",
