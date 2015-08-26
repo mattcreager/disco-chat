@@ -17,7 +17,7 @@
   div:nth-child(2) {
   	@include span-columns(4);
   	text-align: right;
-	  color: #FF7E7E;
+	color: #FF7E7E;
   }
 }
 
@@ -31,8 +31,8 @@
   $dark-gray: #333 !default;
   $base-font-color: $dark-gray !default;
   $track-border-color: $base-border-color;
-  $track-border: 1px solid rgba(255, 255, 255, 0.2);
-  $track-background: rgba(255, 255, 255, 0.2);
+  $track-border: 1px solid $track-border-color;
+  $track-background: lighten($track-border-color, 10%);
   $track-header-background: $track-background;
   $track-hover-background: lighten($track-background, 5%);
   $track-image-background: #DBD199;
@@ -47,6 +47,7 @@
   background-color: $track-background;
   border-radius: $base-border-radius;
   border: $track-border;
+  box-shadow: 0 1px 1px darken($base-background-color, 50%);
   cursor: pointer;
   margin: 0 $track-margin $base-spacing $track-margin;
   position: relative;

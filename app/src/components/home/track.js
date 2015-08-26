@@ -26,7 +26,7 @@ class Track extends React.Component {
           </div>
         </div>
         <aside>
-          {/* <div>Now Playing</div> */}
+          <div>Now Playing</div>
           {/*  <div>5 Likes</div> */}
         </aside>
       </article>
