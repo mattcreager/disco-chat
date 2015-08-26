@@ -38,7 +38,7 @@ li {
 html, body {
   width: 100%;
   height: 100%;
-  background-color: #CF2424;
+  background-color: #534A93;
   font-family: Helvetica, Arial, sans-serif; }
 
 /* Rectangles */
@@ -173,9 +173,10 @@ header {
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   width: 250px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #f6f6f6;
   border-radius: 1px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid gainsboro;
+  box-shadow: 0 1px 1px gray;
   cursor: pointer;
   margin: 0 0 1em 0;
   position: relative;
@@ -195,8 +196,8 @@ header {
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #f6f6f6;
+    border-bottom: 1px solid gainsboro;
     border-radius: 1px 1px 0 0;
     display: block;
     margin-left: auto;
@@ -216,12 +217,12 @@ header {
     .track .details .artist {
       color: #FF7E7E; }
   .track:focus, .track:hover {
-    background-color: rgba(255, 255, 255, 0.2); }
+    background-color: white; }
     .track:focus .cover-art img, .track:hover .cover-art img {
       background: #e2daac; }
     .track:focus .track-header, .track:hover .track-header {
-      background-color: rgba(255, 255, 255, 0.2); }
+      background-color: white; }
   .track:active {
-    background-color: rgba(255, 255, 255, 0.2); }
+    background-color: #f6f6f6; }
     .track:active .track-header {
-      background-color: rgba(255, 255, 255, 0.2); }
+      background-color: #f6f6f6; }
