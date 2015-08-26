@@ -13,6 +13,14 @@ q.on('error', function(err) {
   console.log( 'Oops...', err.stack )
 })
 
+process.once('SIGINT', function() {
+  q.shutdown(500, function(err) {
+    fmt.log({ type: 'info', msg: err || 'redis client connection closed' })
+
+    process.exit(0)
+  })
+})
+
 process.once('SIGTERM', function() {
   q.shutdown(500, function(err) {
     fmt.log({ type: 'info', msg: err || 'redis client connection closed' })
