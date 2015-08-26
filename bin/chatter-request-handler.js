@@ -17,7 +17,7 @@ interval.on('stop', function(execCount) {
   console.log('Stopped after ' + execCount + ' executions')
 })
 
-let totalProcessed = 3
+let totalProcessed = 0
 
 function pollPg() {
   pg.connect(`${process.env.DATABASE_URL}?ssl=true`, function(err, client, done) {
