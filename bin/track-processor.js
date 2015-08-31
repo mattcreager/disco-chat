@@ -31,28 +31,52 @@ const validFields = [
   'toZip',
 ]
 
-function track(job, done) {
+function pauseWorker (ctx) {
+  ctx.pause(1000, function (err) {
+    fmt.log({
+      type: 'warning',
+      msg: 'issue occured: worker paused, will resume in 30 seconds'
+    })
 
+    setTimeout(function () {
+      fmt.log({
+        type: 'warning',
+        msg: 'worker back on duty'
+      })
+      ctx.resume();
+    }, 30000)
+  })
+}
+
+function track (job, ctx, done) {
   let rawMessage = _.pick(job.data, validFields)
 
   db.Message.create(rawMessage).then(function(message) {
+
     fmt.log({
       type: 'info',
-      msg: `SMS processed from ${message.fromCity}, requesting ${message.body}`
+      msg: `Worker has job from ${message.fromCity}, requesting ${message.body}`
     })
 
     let opts = { where: { number: message.get('to') } }
 
     return db.Account.findOne(opts).then(function(acct) {
+      if (!acct) {
+        let err = new Error(`acct 404, have you auth'd with RDIO?`)
+        fmt.log({ type: 'warning', msg: err })
+        done(err)
+        pauseWorker(ctx)
+        return
+      }
+
       let expireAt = moment(acct.get('expiresAt'))
       let now = moment()
 
       if (expireAt.isBefore(now)) {
-        fmt.log({
-          type: 'warning',
-          msg: `Token expired ${expireAt.fromNow()}`
-        })
-
+        let err = new Error(`token expired ${expireAt.fromNow()}`)
+        fmt.log({ type: 'warning', msg: err })
+        done(err)
+        pauseWorker(ctx)
         return
       }
 
@@ -82,7 +106,7 @@ function track(job, done) {
         if (!body.result || body.result.track_count === 0) {
           fmt.log({
             type: 'warning',
-            msg: 'Rdio search yielded no result',
+            msg: 'Job complete: Rdio search yielded no result',
             messageKey: message.id,
             request: message.body
           })
@@ -102,7 +126,7 @@ function track(job, done) {
           return acct.getPlaylists(opts).then(function(playlist) {
             fmt.log({
               type: 'info',
-              msg: 'Song added to the playlist',
+              msg: 'Job complete: Track added to the playlist',
               messageKey: message.id,
               trackKey: track.id
             })

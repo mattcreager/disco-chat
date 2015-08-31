@@ -20,12 +20,18 @@ _.each(controllers, function(controller) {
   app.use('/api' + controller.root, controller.routes())
 })
 
-app.listen(config.server.port)
-
-fmt.log({ type: 'info', msg: 'Express running on port: ' + config.server.port })
-
 if (config.env === 'development') {
   kue.app.listen(5555)
 
-  fmt.log({ type: 'info', msg: 'Dev detected, Kue running on port: 5555' })
+  fmt.log({
+    type: 'info',
+    msg: 'Dev env detected, Kue running on port: 5555'
+  })
 }
+
+app.listen(config.server.port)
+
+fmt.log({
+  type: 'info',
+  msg: `Express API running on port: ${config.server.port}`
+})

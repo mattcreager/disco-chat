@@ -7,6 +7,12 @@ let db = require('../models')
 let oauth2 = require('simple-oauth2')(config.rdio)
 let _ = require('lodash')
 let request = require('request')
+var fmt = require('logfmt')
+
+const number = {
+  s37078794: '+14159360869',
+  s7509896: '+14157669503'
+}
 
 class AuthController {
 
@@ -40,7 +46,7 @@ class AuthController {
     }, saveToken)
 
     function saveToken(error, result) {
-      if (error) { console.log('Access Token Error', error.message) }
+      if (error) { console.error('Access Token Error', error.message) }
 
       var token = oauth2.accessToken.create(result)
 
@@ -58,11 +64,16 @@ class AuthController {
             refreshToken: token.token.refresh_token,
             expiresAt: token.token.expires_at,
             tokenType: token.token.token_type,
-            number: '+14157669503'
+            number: number[body.result.key]
           })
 
           db.Account.upsert(rawUser)
             .then(function(account) {
+              fmt.log({
+                type: 'info',
+                msg: `a user has been created and authenticated`
+              })
+
               return db.Account.findOne({
                 where: { key: rawUser.key },
                 include: [{ model: db.Playlist }]
@@ -74,24 +85,31 @@ class AuthController {
               if (account.get('Playlists').length > 0) return
 
               return db.Playlist.create({
-                  name: 'First PList',
-                  description: 'experimenting with PList',
+                  name: 'Default Playlist',
+                  description: 'The Default Playlist',
                   active: true
                 })
                 .then(function(playlist) {
-                  console.log('a playlist', playlist.get('name'))
-                  console.log('an account', account.get('key'))
+                  fmt.log({
+                    type: 'info',
+                    msg: `a default playlist has been created/updated`
+                  })
+
                   return account.addPlaylist(playlist)
-                })
-                .then(function(result) {
-                  console.log('a result', result.get('account'))
                 })
             })
             .finally(function() {
+              if (!config.url) {
+                fmt.log({
+                  type: 'warning',
+                  msg: 'URL config var must be set prior to authentication w. RDIO'
+                })
+              }
+
               res.redirect(config.url)
             })
             .catch(function(err) {
-              console.log('error w. auth', err.stack)
+              fmt.error(err.stack)
             })
         }
       })

@@ -27,11 +27,20 @@ class SmsController {
       title: req.body.Body + ' requested by ' + req.body.From
     })
 
-    q.create('track', track).save(function(err){
+    let job = q.create('track', track)
+
+    job.attempts(3).ttl(5000)
+
+    job.on('failed attempt', function(err, doneAttempts){
+      console.log(`Worker failed to complete job, this is attempt ${doneAttempts} of 3`)
+
+    })
+
+    job.save(function(err) {
       if (!err) {
         fmt.log({
           type: 'info',
-          msg: `Hey Node, I've got work for you to do`
+          msg: `Track request received, added to Redis queue`
         })
       }
 
@@ -44,7 +53,6 @@ class SmsController {
       ).toString())
     })
   }
-
 }
 
 module.exports = new SmsController()
