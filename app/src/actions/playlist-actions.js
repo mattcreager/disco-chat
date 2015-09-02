@@ -10,7 +10,7 @@ class PlaylistActions extends Actions {
   }
 
   load(key) {
-    return axiosInterface.get('playlist', 'playlist/s7509896')
+    return axiosInterface.get('playlist', `playlist/${key}`)
   }
 
 }

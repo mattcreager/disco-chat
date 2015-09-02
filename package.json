@@ -13,10 +13,10 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "iojs": "2.1.x"
+    "iojs": "2.5.x"
   },
   "devDependencies": {
-    "MD5": "^1.2.1",
+    "md5": "^2.0.0",
     "axios": "^0.5.4",
     "babelify": "^5.0.4",
     "browser-sync": "^2.4.0",

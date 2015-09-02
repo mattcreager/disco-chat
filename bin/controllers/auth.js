@@ -10,8 +10,8 @@ let request = require('request')
 var fmt = require('logfmt')
 
 const number = {
-  s37078794: '+14159360869',
-  s7509896: '+14157669503'
+  s7509896: '+14157669503',
+  s37078794: '+14159360869'
 }
 
 class AuthController {
@@ -106,7 +106,7 @@ class AuthController {
                 })
               }
 
-              res.redirect(config.url)
+              res.redirect(config.url + `/#/auth/${rawUser.key}?number=${rawUser.number}`)
             })
             .catch(function(err) {
               fmt.error(err.stack)

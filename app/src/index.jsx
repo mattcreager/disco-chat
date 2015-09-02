@@ -20,7 +20,7 @@ try {
     React.render(
       <FluxComponent flux={flux}>
 	      <Handler />
-	    </FluxComponent>, 
+	    </FluxComponent>,
 	    document.getElementById('app-container'),
       function() {
         //console.log('args', arguments)
@@ -31,6 +31,3 @@ try {
   React.render(<PrettyError e={e} />, document.body)
   throw e
 }
-
-// good idea -> bootstrap config
-// const config = JSON.parse(window.unescape(document.getElementsByName('config/app')[0].content));

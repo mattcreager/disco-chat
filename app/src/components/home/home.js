@@ -6,11 +6,20 @@ import Track from './track'
 
 class Home extends React.Component {
 
+  constructor(props, context) {
+    super(props)
+
+    this.router = context.router
+    this.userKey = context.router.getCurrentParams().userKey
+    this.number  =  context.router.getCurrentQuery().number
+  }
+
   componentWillMount() {
+    if (!this.userKey) return
     const playlistActions = this.props.flux.getActions('playlist')
 
-    playlistActions.load()
-    setInterval(playlistActions.load, 5000)
+    playlistActions.load(this.userKey)
+    setInterval(playlistActions.load.bind(playlistActions, this.userKey), 5000)
   }
 
   render() {
@@ -47,6 +56,10 @@ class Home extends React.Component {
       </div>
     )
   }
+}
+
+Home.contextTypes = {
+    router: React.PropTypes.func.isRequired
 }
 
 export default Home

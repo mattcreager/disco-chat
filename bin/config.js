@@ -6,7 +6,7 @@ var url = require('url')
 
 var redis = process.env.REDIS_URL && url.parse(process.env.REDIS_URL)
 var postgres = process.env.DATABASE_URL && process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
-console.log(process.env.HOST)
+
 module.exports = {
   env: process.env.NODE_ENV || 'production',
   url: process.env.URL || '' ,

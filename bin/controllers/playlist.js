@@ -14,7 +14,7 @@ class PlaylistController {
   }
 
   routes() {
-    this.router.get('/:accountKey', this._getActiveThread.bind(this))
+    this.router.get('/:accountKey', this._getActivePlaylist.bind(this))
     this.router.get('/', this._get.bind(this))
 
     return this.router
@@ -24,7 +24,8 @@ class PlaylistController {
     res.send('hello world')
   }
 
-  _getActiveThread(req, res) {
+  _getActivePlaylist(req, res) {
+
     let opts = {
       where: { key: req.params.accountKey },
       include: [{
