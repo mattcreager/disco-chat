@@ -1,7 +1,5 @@
 # Disco Chat
 
-
-
 ## Local Development Dependencies
 
 - [Docker](https://www.docker.com/)
