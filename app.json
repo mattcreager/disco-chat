@@ -33,5 +33,6 @@
   },
   "addons": [
     "heroku-redis"
-  ]
+  ],
+  "image": "heroku/node"
 }

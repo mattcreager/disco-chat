@@ -17,8 +17,6 @@ class DetailStore extends Store {
 
   handleChangeRoute(data) {
   	let routeCount = data.state.routes.length
-
-    this.setState({ miniSidebar: !_.inRange(routeCount, 0, 3) })
   }
 
 }

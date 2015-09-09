@@ -61,8 +61,9 @@ function track (job, ctx, done) {
     let opts = { where: { number: message.get('to') } }
 
     return db.Account.findOne(opts).then(function(acct) {
+
       if (!acct) {
-        let err = new Error(`acct 404, have you auth'd with RDIO?`)
+        let err = new Error(`No account found, have you auth'd with RDIO?`)
         fmt.log({ type: 'warning', msg: err })
         done(err)
         pauseWorker(ctx)

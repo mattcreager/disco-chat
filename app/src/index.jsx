@@ -18,7 +18,7 @@ try {
     routerActions.changeRoute(Handler, state)
 
     React.render(
-      <FluxComponent flux={flux}>
+      <FluxComponent flux={flux} connectToStores={['account']}>
 	      <Handler />
 	    </FluxComponent>,
 	    document.getElementById('app-container'),

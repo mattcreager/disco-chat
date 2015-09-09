@@ -58,7 +58,6 @@ class AuthController {
 
       request.post('https://www.rdio.com/api/1/', opts, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-
           var rawUser = _.merge(body.result, {
             accessToken: token.token.access_token,
             refreshToken: token.token.refresh_token,
@@ -71,15 +70,13 @@ class AuthController {
             .then(function(account) {
               fmt.log({
                 type: 'info',
-                msg: `a user has been created and authenticated`
+                msg: `User has been created and authenticated - ${rawUser.key}`
               })
 
               return db.Account.findOne({
                 where: { key: rawUser.key },
                 include: [{ model: db.Playlist }]
               })
-
-              console.log('woot new account processed to db')
             })
             .then(function(account) {
               if (account.get('Playlists').length > 0) return
@@ -99,13 +96,6 @@ class AuthController {
                 })
             })
             .finally(function() {
-              if (!config.url) {
-                fmt.log({
-                  type: 'warning',
-                  msg: 'URL config var must be set prior to authentication w. RDIO'
-                })
-              }
-
               res.redirect(config.url + `/#/auth/${rawUser.key}?number=${rawUser.number}`)
             })
             .catch(function(err) {

@@ -1,11 +1,11 @@
 'use strict'
 
-import UserActions from './user-actions'
+import AccountActions from './account-actions'
 import RouterActions from './router-actions'
 import PlaylistActions from './playlist-actions'
 
 export default {
-  UserActions,
+  AccountActions,
   RouterActions,
   PlaylistActions
 }

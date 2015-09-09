@@ -10,23 +10,18 @@ let q = kue.createQueue({ redis: config.redis })
 q.watchStuckJobs()
 
 q.on('error', function(err) {
-  console.log( 'Oops...', err.stack )
+  shutdown('Could not connect to Redis, have you created the add-on?')
 })
 
-process.once('SIGINT', function() {
-  q.shutdown(500, function(err) {
-    fmt.log({ type: 'info', msg: err || 'redis client connection closed' })
+process.once('SIGINT', shutdown)
+process.once('SIGTERM', shutdown)
+
+function shutdown(msg) {
+  q.shutdown(500, function (err) {
+    fmt.log({ type: 'error', msg: err || msg || 'redis client connection closed' })
 
     process.exit(0)
   })
-})
-
-process.once('SIGTERM', function() {
-  q.shutdown(500, function(err) {
-    fmt.log({ type: 'info', msg: err || 'redis client connection closed' })
-
-    process.exit(0)
-  })
-})
+}
 
 module.exports = q

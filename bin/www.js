@@ -9,8 +9,18 @@ var kue = require('kue')
 var _ = require('lodash')
 var controllers = require('./controllers')
 var config = require('./config')
+var db = require('./models')
 
 var app = express()
+
+db.init().catch(function(err) {
+  fmt.log({
+    type: 'error',
+    msg: 'Could not connect to PG database, have you created the add-on?'
+  })
+
+  process.exit(0)
+})
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))

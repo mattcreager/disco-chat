@@ -7,7 +7,7 @@ import Home from './home'
 class HomeWrapper extends React.Component {
   render() {
     return (
-      <FluxComponent connectToStores={['router', 'playlist']}>
+      <FluxComponent connectToStores={['router', 'account', 'playlist']}>
         <Home />
       </FluxComponent>
     )

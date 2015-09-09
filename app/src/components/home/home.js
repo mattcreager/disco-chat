@@ -10,16 +10,15 @@ class Home extends React.Component {
     super(props)
 
     this.router = context.router
-    this.userKey = context.router.getCurrentParams().userKey
-    this.number  =  context.router.getCurrentQuery().number
   }
 
   componentWillMount() {
-    if (!this.userKey) return
     const playlistActions = this.props.flux.getActions('playlist')
 
-    playlistActions.load(this.userKey)
-    setInterval(playlistActions.load.bind(playlistActions, this.userKey), 5000)
+    let { key } = this.props.account
+    let loadPlaylist = playlistActions.load.bind(playlistActions, key)
+
+    loadPlaylist(); setInterval(loadPlaylist, 5000)
   }
 
   render() {
@@ -35,6 +34,12 @@ class Home extends React.Component {
       />
     })
 
+    let { number } = this.props.account
+
+    function formatNumber(n) {
+      return `1 (${n.substr(2, 3)}) ${n.substr(5, 3)} - ${n.substr(8,4)}`
+    }
+
     return (
       <div>
 
@@ -47,7 +52,7 @@ class Home extends React.Component {
             </aside>
           </a>
           <div className="sms-number">
-            <span><strong>1 (415) 766 9503</strong></span>
+            <span><strong>{ formatNumber(number) }</strong></span>
             <h3>Text a track to <strong>&#8613;</strong></h3>
           </div>
         </header>
