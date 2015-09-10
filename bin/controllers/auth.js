@@ -20,10 +20,6 @@ class AuthController {
     this.root = '/auth'
     this.router = express.Router()
     this.db = db
-    this.authUri = oauth2.authCode.authorizeURL({
-      redirect_uri: config.url + '/api/auth/callback',
-      response_type: 'token'
-    })
   }
 
   routes() {
@@ -34,7 +30,11 @@ class AuthController {
   }
 
   _get(req, res) {
-    res.redirect(this.authUri)
+    let authUri = oauth2.authCode.authorizeURL({
+      redirect_uri: req.protocol + '://' + req.get('host') + '/api/auth/callback',
+      response_type: 'token'
+    })
+    res.redirect(authUri)
   }
 
   _getCallback(req, res) {
@@ -42,7 +42,7 @@ class AuthController {
 
     oauth2.authCode.getToken({
       code: code,
-      redirect_uri: config.url + '/api/auth/callback'
+      redirect_uri: req.protocol + '://' + req.get('host') + '/api/auth/callback'
     }, saveToken)
 
     function saveToken(error, result) {
