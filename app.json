@@ -19,17 +19,13 @@
       "description": "A secret key for verifying the integrity of signed cookies.",
       "generator": "secret"
     },
-    "HOST": "0.0.0.0",
     "NODE_ENV": "staging",
-    "BLUEBIRD_DEBUG": "1",
     "RDIO_CLIENT_ID": {
       "required": true
     },
     "RDIO_CLIENT_SECRET": {
       "required": true
-    },
-    "URL": "http://disco-chat.herokuapp.com",
-    "VERBOSE": "TRUE"
+    }
   },
   "addons": [
     "heroku-redis"
