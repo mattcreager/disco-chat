@@ -4,16 +4,16 @@
   "description": "party on",
   "main": "index.js",
   "scripts": {
-    "start": "node --harmony_classes ./bin/www",
-    "processTracks": "node --harmony_classes ./bin/track-processor",
-    "chatterHandler": "node --harmony_classes ./bin/chatter-request-handler",
+    "start": "node ./bin/www",
+    "processTracks": "node ./bin/track-processor",
+    "chatterHandler": "node ./bin/chatter-request-handler",
     "test": "standard && gulp test",
     "gulp": "gulp"
   },
   "author": "",
   "license": "ISC",
   "engines": {
-    "iojs": "2.5.x"
+    "node": "4.0.x"
   },
   "devDependencies": {
     "axios": "^0.5.4",
@@ -31,10 +31,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.0.4",
     "gulp-util": "^3.0.4",
-    "lodash": "^3.7.0",
-    "logfmt": "^1.2.0",
     "md5": "^2.0.0",
-    "moment": "^2.10.2",
     "node-dev": "^2.6.2",
     "node-neat": "^1.7.2",
     "nodemon": "^1.3.7",

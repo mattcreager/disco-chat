@@ -5,9 +5,13 @@
 $big-orange: #CF2424;
 $big-purple: #534A93;
 
-html, body {
+body {
 	width: 100%;
-    height: 100%;
-    background-color: $big-purple;
-    font-family: Helvetica, Arial, sans-serif;
+  height: 100%;
+  background-color: $big-orange;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body.purple {
+  background-color: $big-purple;
 }
