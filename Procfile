@@ -1,3 +1,3 @@
-web: node --harmony_classes ./bin/www
+web: npm start
 track: npm run processTracks
 chatter: npm run chatterHandler
