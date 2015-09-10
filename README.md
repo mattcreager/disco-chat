@@ -1,5 +1,6 @@
 # Disco Chat
 
+![Screenshot](screenshot.png)
 
 
 ## Local Development Dependencies
