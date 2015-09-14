@@ -11,6 +11,7 @@ it could easily be adapated to power the playlist at your next party.
 
 | Dependency                              | Config Vars (see .env-example)        |
 | --------------------------------------- | ------------------------------------- |
+| [Node V4.0](https://nodejs.org/en/)     | N/A                                   |
 | [Postgres](http://www.postgresql.org/)  | DATABASE_URL                          |
 | [Redis](http://redis.io/)               | REDIS_URL                             |
 | [RDIO](http://www.rdio.com/developers/) | RDIO_CLIENT_ID, RDIO_CLIENT_SECRET    |
