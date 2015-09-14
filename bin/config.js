@@ -8,7 +8,7 @@ var redis = process.env.REDIS_URL && url.parse(process.env.REDIS_URL)
 var postgres = process.env.DATABASE_URL && process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
 
 module.exports = {
-  env: process.env.NODE_ENV || 'production',
+  env: process.env.NODE_ENV || 'development',
   url: process.env.URL || '' ,
   secret: process.env.SESSION_SECRET || 'noSecret',
   verbose: util.bool(process.env.VERBOSE) || false,
