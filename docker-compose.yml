@@ -1,8 +1,0 @@
-web:
-  build: .
-  volumes:
-    - .:/app
-  ports:
-    - "5000:5000"
-  working_dir: /app
-  command: npm run dev

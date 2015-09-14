@@ -1,22 +1,35 @@
 # Disco Chat
 
+A Node.js application used to show-off my favorite Heroku features. Though
+it could easily be adapated to power the playlist at your next party.
+
+*This is what it once looked like:*
+
 ![Screenshot](screenshot.png)
 
+## Development Dependencies
 
-## Local Development Dependencies
+| Dependency                              | Config Vars (see .env-example)        |
+| --------------------------------------- | ------------------------------------- |
+| [Postgres](http://www.postgresql.org/)  | DATABASE_URL                          |
+| [Redis](http://redis.io/)               | REDIS_URL                             |
+| [RDIO](http://www.rdio.com/developers/) | RDIO_CLIENT_ID, RDIO_CLIENT_SECRET    |
+| [Twilio](https://www.twilio.com)        | N/A                                   |
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
+Twilio is used to proxy track requests sent via. SMS messages, the relevant endpoint
+is `http://{*}.herokuapp.com/api/sms`.
+
+You can expose this endpoint if you're working locally with something like [ngrok](https://ngrok.com/docs#expose)
 
 ## Install
 
-1. `docker-compose up -d` - start the application
-2. `gulp`      - live reload/compilation (you'll want to use a seperate CLI tab)
+1. `npm install` - Install dependencies
 
 ## Run
 
-1. [http://localhost:3000/](http://localhost:3000)
+1. `heroku local` - Start the app
+2. `gulp` - live reload/compilation (seperate CLI tab)
 
 ## Test
 
-1. `npm test` - To date, this is only configured to validate code [standards](https://github.com/feross/standard).
+1. `npm test` - To date, this is only configured to validate w. [standards](https://github.com/feross/standard).`

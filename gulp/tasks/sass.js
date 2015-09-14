@@ -9,11 +9,7 @@
 var gulp = require('gulp')
 var sass = require('gulp-sass')
 var neat = require('node-neat')
-
-console.log(neat.includePaths)
-
 var rename = require('gulp-rename')
-
 
 var handleErrors = require('../util/error-handler')
 
