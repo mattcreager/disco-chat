@@ -2,16 +2,57 @@
 /* ///               Global             /// */
 /* //////////////////////////////////////// */
 
-$big-orange: #CF2424;
-$big-purple: #534A93;
+$color-slate: #091A1F;
+$color-red: #7C1E16;
+$color-purple: #534A93;
+$color-blue: #3F9EFB;
 
-body {
-	width: 100%;
+$link-color: $color-blue;
+
+$font-family: 'Source Sans Pro', sans-serif;
+
+html {
   height: 100%;
-  background-color: $big-orange;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
-body.purple {
-  background-color: $big-purple;
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+	width: 100%;
+  background-color: $color-slate;
+  font-family: $font-family;
+  &:after {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    content: "";
+    height: 15px;
+    background: $color-blue;
+    width: 100%;
+
+  }
+
+  &.purple {
+    background-color: $color-purple;
+  }
+}
+
+a {
+  color: $link-color;
+}
+
+.button {
+  display: inline-block;
+  margin: 1em 0;
+  background-color: white;
+  border-radius: 6px;
+  padding: 1em 2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 1px 0 $color-red;
+
+  &:hover {
+    color: lighten($color-blue, 10%);
+  }
 }

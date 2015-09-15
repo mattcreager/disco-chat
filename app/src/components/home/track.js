@@ -22,7 +22,7 @@ class Track extends React.Component {
           <div className="details">
             <div className="name">{ track.name }</div>
             <div className="album">{ track.album }</div>
-            <div className="artist">{ track.artist }</div>
+            <div className="artist"><span>by </span> { track.artist }</div>
           </div>
         </div>
         <aside>

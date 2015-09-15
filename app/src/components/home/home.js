@@ -52,8 +52,8 @@ class Home extends React.Component {
             </aside>
           </a>
           <div className="sms-number">
+            <h3>Text a track to</h3>
             <span><strong>{ formatNumber(number) }</strong></span>
-            <h3>Text a track to <strong>&#8613;</strong></h3>
           </div>
         </header>
 

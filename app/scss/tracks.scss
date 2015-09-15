@@ -8,7 +8,7 @@
   @include row();
   font-size: 18px;
   font-weight: bold;
-  color: #7E0000;
+  color: $color-red;
 
   div:nth-child(1) {
   	@include span-columns(8);
@@ -22,8 +22,8 @@
 }
 
 .track {
-  $base-border-color: gainsboro !default;
-  $base-border-radius: 1px !default;
+  $base-border-color: white !default;
+  $base-border-radius: 5px !default;
   $base-background-color: white !default;
   $base-spacing: 1em !default;
   $action-color: #477DCA !default;
@@ -31,69 +31,72 @@
   $dark-gray: #333 !default;
   $base-font-color: $dark-gray !default;
   $track-border-color: $base-border-color;
-  $track-border: 1px solid rgba(255, 255, 255, 0.2);
-  $track-background: rgba(255, 255, 255, 0.2);
+  $track-border: 0;
+  $track-background: white;
   $track-header-background: $track-background;
   $track-hover-background: lighten($track-background, 5%);
   $track-image-background: #DBD199;
-  $track-image-hover-background: lighten($track-image-background, 5%);
+  $track-image-hover-background: white;
   $track-margin: 0;
-  $track-padding: 8px;
+  $track-padding: 12px;
+  $track-shadow: 0 4px 12px fade-out(black, .7);
 
   @include flex-basis(10em);
   @include flex-grow(1);
   @include transition (all 0.2s ease-in-out);
-  width: 250px;
-  background-color: $track-background;
+  width: 260px;
+  background-color: fade-out($track-background, .3);
   border-radius: $base-border-radius;
   border: $track-border;
   cursor: pointer;
   margin: 0 $track-margin $base-spacing $track-margin;
   position: relative;
   padding: 17px 16px $track-padding;
+  box-shadow: $track-shadow;
 
   .cover-art {
     overflow: hidden;
-    max-height: 215px;
+    max-width: 100%;
+    border-radius: $base-border-radius - 1;
 
     img {
       @include transition (all 0.2s ease-in-out);
       background: $track-image-background;
-      border-top-left-radius: $base-border-radius;
-      border-top-right-radius: $base-border-radius;
       width: 100%;
     }
-  }
-
-  .cover-art {
-    @include transition (all 0.2s ease-in-out);
-    background-color: $track-header-background;
-    border-bottom: $track-border;
-    border-radius: $base-border-radius $base-border-radius 0 0;
-    display: block;
-    margin-left: auto;
-    margin-right: auto
   }
 
   .details {
     font-size: 18px;
     padding: ($base-spacing / 2) 0;
     line-height: 1.4em;
-    margin-top:8px;
+    margin-top: 0;
 
     p {
       margin: 0 0 ($base-spacing / 2);
     }
 
     .name {
-      color: #7E0000;
+      color: darken($link-color, 10%);
       font-size: 20px;
-      font-weight: bold;
-      line-height: 1.5em;
+      font-weight: 400;
+      line-height: 1em;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     .artist {
-      color: #FF7E7E;
+      color: $color-slate;
+      margin-top: 3px;
+
+      span:first-child {
+        color: fade-out($color-slate, .5);
+      }
+    }
+
+    .album {
+      font-size: .7em;
     }
   }
 
@@ -103,6 +106,7 @@
 
     .cover-art img {
       background: $track-image-hover-background;
+      border-radius: 3px;
     }
 
     .track-header {
@@ -115,6 +119,28 @@
 
     .track-header {
       background-color: $track-background;
+    }
+  }
+}
+
+.track-wrapper {
+  &:last-of-type {
+    .track {
+      position: relative;
+      background: white;
+      box-shadow: 0 0 30px 3px fade-out(white, .7);
+      &:before {
+        content: "♫ Now Playing";
+        position: absolute;
+        top: -30px;
+        left: 0;
+        width: 100%;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: .9em;
+        text-align: center;
+      }
     }
   }
 }

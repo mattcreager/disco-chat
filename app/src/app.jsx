@@ -42,8 +42,13 @@ class App extends React.Component {
   render () {
     if (!this.state.authenticated) {
       return (
-        <div className='main container'>
-          <a href="/api/auth">Best Login First...</a>
+        <div className='main container login'>
+          <div className="logo">
+            <img src="images/disco-chat-logo.png" alt="Smiley face" align="middle"/>
+            <h1><strong>Disco</strong>Chat</h1>
+            <p>Your Party Built this Playlist</p>
+          </div>
+          <a href="/api/auth" className='button'>Get started!</a>
         </div>
       )
     }

@@ -1,3 +1,6 @@
+* {
+	@include box-sizing(border-box);
+}
 
 h1 {
 	font-size: 26px;
@@ -7,19 +10,63 @@ h1 {
 	@include outer-container;
 }
 
+.login {
+	max-width: 500px;
+	margin: 5em auto;
+	text-align: center;
+
+	.logo h1 {
+		font-size: 60px;
+	}
+
+	p {
+		font-size: 30px;
+	}
+
+	.button {
+		margin: 2em 0;
+		font-size: 1.5em;
+		width: 75%;
+	}
+}
+
 .playlist {
 	margin-top: 60px;
 }
 
+.logo {
+	display: block;
+  font-size: 30px;
+  font-weight: 100;
+	color: #fff;
+
+	.circled {
+		display: block;
+		background: fade-out(black, .9);
+	}
+
+	h1 {
+		font-size: 30px;
+		font-weight: 200;
+		strong {
+			font-weight: 400;
+		}
+	}
+
+	p {
+		text-transform: uppercase;
+		color: fade-out(white, .3);
+	}
+}
+
 header {
 	@include row();
-	margin-top: 120px;
+	margin-top: 80px;
+	border-bottom: 2px solid fade-out(white, .9);
+	padding-bottom: 2em;
 
 	.logo {
-		@include span-columns(8);
-		display: block;
-	    font-size: 30px;
-	    font-family: 'Century Gothic';
+		@include span-columns(9);
 
 	    img {
 	    	@include span-columns(4);
@@ -29,27 +76,43 @@ header {
 
 	    aside {
 	    	@include span-columns(8);
-
-	    	color: #FFB87E;
 	    	margin-top: 18px;
 	    	font-size: 18px;
-
-	    	p {
-	    		text-transform: uppercase;
-	    	}
 	    }
 	}
 
 	.sms-number {
-		@include span-columns(4);
+		@include span-columns(3);
+		border-radius: 6px;
+		text-align: center;
+  	color: #fff;
+  	margin-top: -10px;
+  	box-shadow: 0 3px 10px fade-out(black, .8);
+  	background: $color-blue;
 
-		text-align: right;
-  	color: #FFB87E;
-  	margin-top: 22px;
-  	font-size: 18px;
+  	> span,
+  	> h3 {
+  		display: block;
+			padding: .25em;
+  	}
+
+		> span {
+			padding-bottom: .5em;
+			font-size: 30px;
+		}
+
+		h3 {
+			background: fade-out(black, .3);
+			overflow: hidden;
+			font-size: 18px;
+			letter-spacing: .05em;
+			padding-bottom: .5em;
+			text-transform: uppercase;
+		}
 
   	strong {
-  		font-size: 24px;
+  		font-weight: 300;
   	}
+
 	}
 }
