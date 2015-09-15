@@ -5,7 +5,7 @@ it could easily be adapated to power the playlist at your next party.
 
 *This is what it once looked like:*
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.png)asdfasdfasdf
 
 ## Development Dependencies
 
