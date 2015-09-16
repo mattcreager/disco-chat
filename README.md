@@ -22,6 +22,11 @@ is `http://{*}.herokuapp.com/api/sms`.
 
 You can expose this endpoint if you're working locally with something like [ngrok](https://ngrok.com/docs#expose)
 
+## App Architecture
+
+![App Arch](arch.png)
+
+
 ## Install
 
 1. `npm install` - Install dependencies
