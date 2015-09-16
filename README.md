@@ -24,7 +24,7 @@ You can expose this endpoint if you're working locally with something like [ngro
 
 ## App Architecture
 
-![App Arch](arch.svg)
+![App Arch](arch.png)
 
 
 ## Install
